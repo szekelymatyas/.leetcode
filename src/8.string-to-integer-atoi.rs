@@ -7,11 +7,13 @@
 // @lc code=start
 impl Solution {
     pub fn my_atoi(s: String) -> i32 {
-        i32 mut num = 0;
-        bool mut isNegative = false
-        for (let c in s.chars())
+        let mut num: i32 = 0;
+        let mut sign: i32 = 1;
+        for c in s.bytes()
         {
-
+            c match {
+                
+            }
         }
     }
 }
