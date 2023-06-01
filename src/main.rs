@@ -1,17 +1,23 @@
 
 fn main() {
-    println!("Hello, world!");
-    let s: String = String::from("Hello, world!");
-    let s: Vec<u8> = s.bytes().collect();
-    let mut num = 0;
-    let mut i = 0;
-    while (i < s.len())
-    {
-        let c = s[i];
-        match c {
-            b' ' => { continue;}
-            b'+' => { }
-        }
+    test();
+}
+
+fn test() -> bool{
+    let x = 12321;
+    if x < 0 {
+        return false;
     }
-    return num;
+    let s: Vec<u8> =  x.to_string().bytes().collect();
+    let mut end = s.len();
+    let mut start: usize = 0;
+    while start < end {
+        if s[end] != s[start] 
+        {
+            return false
+        }
+        start += 1;
+        end -= 1;
+    }
+    return true;
 }
