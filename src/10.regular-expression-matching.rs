@@ -1,57 +1,10 @@
-fn main() {
-    let str = String::from("aaaaa");
-    let pattern = String::from("a*");
-    let res = str.match_pattern(pattern);   
-    println!("Res : {}", res);
-}
+/*
+ * @lc app=leetcode id=10 lang=rust
+ *
+ * [10] Regular Expression Matching
+ */
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_same() {
-        let str = String::from("something");
-        let pattern = String::from("something");
-        let res = str.match_pattern(pattern);
-        assert_eq!(res, true);
-    }
-    
-    #[test]
-    fn test_simple_false() {
-        let str = String::from("something");
-        let pattern = String::from("something2");
-        let res = str.match_pattern(pattern);
-        assert_eq!(res, false);
-    }
-
-    #[test]
-    fn test_star() {
-        let str = String::from("aaaaa");
-        let pattern = String::from("a*");
-        let res = str.match_pattern(pattern);
-        assert_eq!(res, true);
-    }
-
-    
-    
-
-    #[test]
-    fn test_star_false() {
-        let str = String::from("aaaaa");
-        let pattern = String::from("b*");
-        let res = str.match_pattern(pattern);
-        assert_eq!(res, false);
-    }
-
-    #[test]
-    fn test_2() {
-        let str = String::from("aabcbcbcaccbcaabc");
-        let pattern = String::from(".*a*aa*.*b*.c*.*a*");
-        let res = str.match_pattern(pattern);
-        assert_eq!(res, true);
-    }
-}
+// @lc code=start
 
 enum ExpressionType {
     Char(char),
@@ -193,10 +146,10 @@ fn match_pattern(exps: &[Expression], chars: &[char]) -> bool {
                 index -= 1;
             }
             return match_pattern(exps, &chars[..index])
-        },        
+        },       
         ([Expression::ZeroOrAny(ExpressionType::Dot)], _) => {
             return true;
-        },
+        },        
         ([Expression::ZeroOrAny(ExpressionType::Dot),  exps @ ..], chars) => {
             let mut index = 0;
             while index < chars.len()
@@ -224,12 +177,10 @@ fn match_single_expression(exp: &ExpressionType, ch: &char, exps: &[Expression],
     }
 }
 
-struct Solution {
-
-}
-
 impl Solution {
     pub fn is_match(s: String, p: String) -> bool {
         return s.match_pattern(p);
     }
 }
+// @lc code=end
+
